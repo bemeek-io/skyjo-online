@@ -1,0 +1,55 @@
+name: Deploy SkyJo Online
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    env:
+      HOST: 10.1.0.7
+      USER: ben
+    concurrency:
+      group: deploy-skyjo
+    environment:
+      name: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Cloudflare WARP
+        uses: Boostport/setup-cloudflare-warp@v1
+        with:
+          version: 2025.6.1335.0
+          organization: bemeek
+          auth_client_id: ${{ secrets.CLOUDFLARE_CLIENT_ID }}
+          auth_client_secret: ${{ secrets.CLOUDFLARE_CLIENT_SECRET }}
+
+      - name: Copy files to remote
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ env.HOST }}
+          username: ${{ env.USER }}
+          key: ${{ secrets.BEMEEK_SSH_PRIVATE_KEY }}
+          source: "package.json,package-lock.json,tsconfig.json,tsconfig.server.json,vite.config.ts,Dockerfile,docker-compose.yml,src,server,shared,public,index.html"
+          target: "/opt/skyjo-online"
+          overwrite: true
+
+      - name: Build and deploy
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ env.HOST }}
+          username: ${{ env.USER }}
+          key: ${{ secrets.BEMEEK_SSH_PRIVATE_KEY }}
+          script: |
+            set -euo pipefail
+            cd /opt/skyjo-online
+
+            # Build the production image on the host
+            docker compose build skyjo
+
+            # Deploy
+            docker compose up -d

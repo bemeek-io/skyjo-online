@@ -1,5 +1,6 @@
 services:
   skyjo:
+    build: .
     image: bemeeker/skyjo:latest
     ports:
       - "3001:3001"
