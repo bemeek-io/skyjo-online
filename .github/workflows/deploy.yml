@@ -34,7 +34,7 @@ jobs:
           host: ${{ env.HOST }}
           username: ${{ env.USER }}
           key: ${{ secrets.BEMEEK_SSH_PRIVATE_KEY }}
-          source: "package.json,package-lock.json,tsconfig.json,tsconfig.server.json,vite.config.ts,Dockerfile,docker-compose.yml,src,server,shared,public,index.html"
+          source: "package.json,package-lock.json,tsconfig.json,tsconfig.node.json,tsconfig.server.json,vite.config.ts,Dockerfile,docker-compose.yml,src,server,shared,public,index.html"
           target: "/opt/skyjo-online"
           overwrite: true
 
