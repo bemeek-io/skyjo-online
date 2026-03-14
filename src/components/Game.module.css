@@ -1,0 +1,1494 @@
+/* Mobile-first styles */
+.container {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: 0.25rem;
+  position: relative;
+  z-index: 1;
+  gap: 0.25rem;
+  transition: background 0.3s ease;
+}
+
+.myTurnContainer {
+  background: linear-gradient(135deg, rgba(255, 107, 74, 0.08) 0%, transparent 50%);
+}
+
+/* Turn banner - mobile */
+.turnBanner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  z-index: 50;
+  animation: slide-down 0.3s ease-out;
+}
+
+@keyframes slide-down {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+.lastRoundBanner {
+  position: fixed;
+  top: 2.25rem;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #e84393, #fd79a8);
+  color: white;
+  text-align: center;
+  padding: 0.375rem 0.5rem;
+  font-weight: 600;
+  font-size: 0.7rem;
+  z-index: 49;
+  animation: pulse-warning 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-warning {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.75; }
+}
+
+/* Header - mobile */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.25rem;
+  margin-top: 1.75rem;
+  position: relative;
+}
+
+.exitBtn {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  padding: 0.375rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  min-width: 50px;
+}
+
+.exitBtn:hover {
+  background: var(--danger);
+  color: white;
+}
+
+.headerCenter {
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.scoreboardBtn {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  padding: 0.375rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  min-width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scoreboardBtn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--text-primary);
+}
+
+.roomCode {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.roundInfo {
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Phase message */
+.phaseMessage {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  padding: 0.125rem 0.5rem;
+  font-weight: 500;
+  min-height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.myTurnMessage {
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+/* Other players section */
+.otherPlayersSection {
+  padding: 0.125rem;
+}
+
+/* Mobile view - single player display */
+.mobileView {
+  display: flex;
+  justify-content: center;
+}
+
+/* Desktop grid - hidden on mobile */
+.desktopGrid {
+  display: none;
+}
+
+/* Other player card */
+.otherPlayer {
+  position: relative;
+  background: var(--bg-card);
+  border-radius: 10px;
+  padding: 0.375rem;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.otherPlayer.active {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 20px rgba(255, 107, 74, 0.3);
+}
+
+.otherPlayer.disconnected {
+  opacity: 0.4;
+}
+
+.otherPlayerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.375rem;
+  margin-bottom: 0.25rem;
+}
+
+.otherPlayerInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-width: 0;
+}
+
+.playerAvatar {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.otherPlayerName {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.turnDot {
+  color: var(--accent-primary);
+  font-size: 0.625rem;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.otherPlayerScore {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+  white-space: nowrap;
+}
+
+.totalScore {
+  color: var(--text-muted);
+}
+
+.otherPlayerGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3px;
+}
+
+/* Center area */
+.centerArea {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  min-height: 80px;
+}
+
+.piles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.pile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.pile.clickable {
+  cursor: pointer;
+}
+
+.pile.clickable:hover > div:nth-child(2),
+.pile.clickable:active > div:nth-child(2) {
+  box-shadow: 0 0 0 3px rgba(255, 107, 74, 0.6), 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.pileLabel {
+  font-size: 0.625rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.pileCount {
+  font-size: 0.625rem;
+  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.emptyPile {
+  width: 50px;
+  height: 70px;
+  border: 2px dashed var(--text-muted);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.5rem;
+}
+
+.drawnCardArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.125rem;
+  width: 100px;
+  height: 110px;
+  flex-shrink: 0;
+}
+
+.drawnLabel {
+  font-size: 0.625rem;
+  color: var(--accent-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  height: 1em;
+  line-height: 1;
+}
+
+.drawnCardPlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  visibility: hidden;
+}
+
+.cardPlaceholder {
+  width: 50px;
+  height: 70px;
+  border-radius: 6px;
+}
+
+.buttonPlaceholder {
+  height: 24px;
+}
+
+@media (min-width: 640px) {
+  .drawnCardArea {
+    width: 120px;
+    height: 160px;
+  }
+  
+  .cardPlaceholder {
+    width: 60px;
+    height: 84px;
+  }
+}
+
+.discardBtn {
+  margin-top: 0.25rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  white-space: nowrap;
+  min-width: 90px;
+  height: 24px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.discardBtn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--text-primary);
+}
+
+.discardBtnActive {
+  background: var(--accent-primary);
+  color: white;
+  border-color: var(--accent-primary);
+}
+
+.discardBtnActive:hover {
+  background: var(--accent-secondary);
+}
+
+.discardBtnHidden {
+  visibility: hidden;
+}
+
+/* My area */
+.myArea {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 0.5rem;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 260px;
+  box-shadow: var(--shadow-card);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.myTurnArea {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 30px rgba(255, 107, 74, 0.3);
+}
+
+.myHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.25rem;
+  gap: 0.375rem;
+}
+
+.myInfo {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.myAvatar {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.myName {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.myTurnBadge {
+  font-size: 0.5rem;
+  padding: 0.125rem 0.375rem;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: white;
+  border-radius: 4px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  width: fit-content;
+}
+
+.myTurnBadge.hidden {
+  visibility: hidden;
+}
+
+.myScoreArea {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.myVisibleScore {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent-secondary);
+}
+
+.myTotalScore {
+  font-size: 0.625rem;
+  color: var(--text-muted);
+}
+
+.myGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  justify-items: center;
+}
+
+/* Overlay */
+/* Final board overlay - shows board with "See Results" prompt */
+.finalBoardOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 10, 30, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  z-index: 100;
+  padding: 1rem;
+  padding-top: 3.5rem;
+  animation: fade-in 0.3s ease-out;
+  cursor: pointer;
+}
+
+.finalBoardBanner {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-glow);
+  animation: slide-down 0.4s ease-out;
+}
+
+.finalBoardBanner h2 {
+  font-size: 1.5rem;
+  margin: 0 0 0.5rem 0;
+  color: var(--text-primary);
+}
+
+.finalBoardBanner p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin: 0 0 1rem 0;
+}
+
+.continueBtn {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.continueBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 107, 74, 0.4);
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 10, 30, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 1rem;
+  animation: fade-in 0.3s ease-out;
+}
+
+.overlayContent {
+  background: var(--bg-card);
+  border-radius: 20px;
+  padding: 1.5rem;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--shadow-glow);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.overlayContent h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.scoreBoard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  max-height: 40vh;
+  overflow-y: auto;
+}
+
+.scoreRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-main);
+  border-radius: 10px;
+  font-size: 0.875rem;
+}
+
+.scoreRow.myRow {
+  border: 2px solid var(--accent-primary);
+}
+
+.rank {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  width: 28px;
+}
+
+.scoreAvatar {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.scoreName {
+  flex: 1;
+  text-align: left;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  flex-wrap: wrap;
+}
+
+.triggered {
+  font-size: 0.5rem;
+  padding: 0.125rem 0.25rem;
+  background: var(--accent-secondary);
+  color: var(--bg-deep);
+  border-radius: 3px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.scoreValue {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+}
+
+/* Final boards in overlay */
+.finalBoards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.finalBoard {
+  background: var(--bg-main);
+  border-radius: 8px;
+  padding: 0.5rem;
+  min-width: 100px;
+  border: 2px solid transparent;
+}
+
+.myFinalBoard {
+  border-color: var(--accent-primary);
+}
+
+.triggeredBoard {
+  box-shadow: 0 0 10px rgba(255, 107, 74, 0.3);
+}
+
+.finalBoardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-bottom: 0.375rem;
+  font-size: 0.625rem;
+}
+
+.finalBoardRank {
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.finalBoardAvatar {
+  font-size: 0.875rem;
+}
+
+.finalBoardName {
+  flex: 1;
+  color: var(--text-primary);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.finalBoardScore {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--accent-primary);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+}
+
+.doubledBadge {
+  font-size: 0.5rem;
+  padding: 0.0625rem 0.125rem;
+  background: var(--danger);
+  color: white;
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+.finalBoardGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+
+.totalScores {
+  margin-bottom: 1rem;
+}
+
+.totalScores h3 {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.overlayActions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.nextBtn {
+  padding: 0.875rem 1.5rem;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(255, 107, 74, 0.4);
+}
+
+.nextBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(255, 107, 74, 0.5);
+}
+
+.leaveBtn {
+  padding: 0.625rem 1rem;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  border-radius: 8px;
+  border: 1px solid var(--text-muted);
+}
+
+.leaveBtn:hover {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: white;
+}
+
+.waitHost {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Tablet and desktop */
+@media (min-width: 640px) {
+  .container {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .turnBanner {
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+
+  .lastRoundBanner {
+    top: 2.75rem;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .header {
+    padding: 1rem;
+    margin-top: 3.5rem;
+  }
+
+  .exitBtn {
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+    min-width: 60px;
+  }
+
+  .scoreboardBtn {
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    min-width: 60px;
+  }
+
+  .roomCode {
+    font-size: 0.875rem;
+  }
+
+  .roundInfo {
+    font-size: 1rem;
+  }
+
+  .phaseMessage {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    min-height: 2.5em;
+  }
+
+  /* Hide mobile view on desktop */
+  .mobileView {
+    display: none;
+  }
+
+  /* Show desktop grid */
+  .desktopGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .otherPlayer {
+    min-width: 180px;
+    max-width: 200px;
+    padding: 0.75rem;
+    border-radius: 12px;
+  }
+
+  .otherPlayerHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.125rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .otherPlayerInfo {
+    gap: 0.5rem;
+  }
+
+  .playerAvatar {
+    font-size: 1.25rem;
+  }
+
+  .otherPlayerName {
+    font-size: 0.875rem;
+  }
+
+  .otherPlayerScore {
+    font-size: 0.75rem;
+  }
+
+  .otherPlayerGrid {
+    gap: 4px;
+  }
+
+  .centerArea {
+    padding: 1rem;
+    min-height: 160px;
+  }
+
+  .discardBtn {
+    margin-top: 0.5rem;
+    font-size: 0.625rem;
+    min-width: 100px;
+    height: 28px;
+  }
+
+  .piles {
+    gap: 2rem;
+  }
+
+  .emptyPile {
+    width: 72px;
+    height: 100px;
+    font-size: 0.75rem;
+  }
+
+  .myArea {
+    max-width: 380px;
+    padding: 1rem;
+  }
+
+  .myAvatar {
+    font-size: 1.75rem;
+  }
+
+  .myName {
+    font-size: 1rem;
+  }
+
+  .myGrid {
+    gap: 6px;
+  }
+
+  .overlayContent {
+    padding: 2rem;
+  }
+
+  .overlayContent h2 {
+    font-size: 1.75rem;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1024px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .header {
+    margin-top: 3rem;
+  }
+
+  .otherPlayer {
+    min-width: 200px;
+    max-width: 220px;
+    padding: 1rem;
+  }
+
+  .piles {
+    gap: 3rem;
+  }
+
+  .myArea {
+    max-width: 420px;
+    padding: 1.25rem;
+  }
+
+  .myGrid {
+    gap: 8px;
+  }
+}
+
+/* Scoreboard Modal */
+.scoreboardOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 10, 30, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 90;
+  padding: 1rem;
+  animation: fade-in 0.2s ease-out;
+}
+
+.scoreboardModal {
+  background: var(--bg-card);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 360px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-glow);
+}
+
+.scoreboardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.scoreboardHeader h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.closeBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeBtn:hover {
+  background: var(--danger);
+  color: white;
+}
+
+.scoreboardList {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+
+.scoreboardRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 0.5rem;
+  border-radius: 8px;
+  background: var(--bg-main);
+  margin-bottom: 0.375rem;
+}
+
+.scoreboardRow:last-child {
+  margin-bottom: 0;
+}
+
+.myScoreboardRow {
+  border: 2px solid var(--accent-primary);
+  background: rgba(255, 107, 74, 0.1);
+}
+
+.currentTurnRow {
+  box-shadow: 0 0 0 1px var(--accent-secondary);
+}
+
+.scoreboardRank {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.625rem;
+  color: var(--text-muted);
+  width: 24px;
+  text-align: center;
+}
+
+.scoreboardAvatar {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.scoreboardInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.scoreboardName {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.youBadge {
+  font-size: 0.5rem;
+  padding: 0.0625rem 0.25rem;
+  background: var(--accent-primary);
+  color: white;
+  border-radius: 3px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.turnBadge {
+  color: var(--accent-secondary);
+  font-size: 0.625rem;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+.scoreboardGameTotal {
+  font-size: 0.625rem;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.scoreboardRoundScore {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  min-width: 40px;
+  text-align: right;
+}
+
+.scoreboardFooter {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.scoreboardHint {
+  font-size: 0.625rem;
+  color: var(--text-muted);
+}
+
+.disconnectedBadge {
+  font-size: 0.5rem;
+  padding: 0.0625rem 0.25rem;
+  background: var(--danger);
+  color: white;
+  border-radius: 3px;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.scoreboardKickBtn {
+  padding: 0.25rem 0.5rem;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.scoreboardKickBtn:hover {
+  background: var(--danger);
+  color: white;
+}
+
+/* Invisible overlay to catch clicks outside reaction picker */
+.reactionOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 49;
+  background: transparent;
+}
+
+/* Reaction Bar - positioned on left side to avoid music button */
+.reactionBar {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  gap: 0.5rem;
+  z-index: 50;
+}
+
+.reactionToggle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+.reactionToggle:hover {
+  transform: scale(1.1);
+  border-color: var(--accent-primary);
+}
+
+.reactionPicker {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background: var(--bg-card);
+  padding: 0.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  animation: scale-up 0.15s ease-out;
+}
+
+.reactionBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: transparent;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.reactionBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.2);
+}
+
+/* Global Floating Reactions - float up the sides of the screen */
+.globalReactions {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  overflow: hidden;
+}
+
+.floatingEmoji {
+  position: absolute;
+  font-size: 2.5rem;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+}
+
+.floatingEmojiLeft {
+  animation: float-up-left 5s ease-out forwards;
+}
+
+.floatingEmojiRight {
+  animation: float-up-right 5s ease-out forwards;
+}
+
+@keyframes float-up-left {
+  0% {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(40px) translateY(-80vh);
+  }
+}
+
+@keyframes float-up-right {
+  0% {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-40px) translateY(-80vh);
+  }
+}
+
+/* Action Indicator - overlaid on player card, doesn't affect layout */
+.actionIndicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.625rem;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  background: rgba(255, 107, 74, 0.9);
+  border-radius: 4px;
+  z-index: 5;
+  white-space: nowrap;
+  animation: fade-pulse 1.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes fade-pulse {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 0.6; }
+}
+
+/* Podium */
+.podium {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  min-height: 140px;
+}
+
+.podiumSpot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: rise-up 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.podiumFirst {
+  animation-delay: 0.3s;
+}
+
+.podiumSecond {
+  animation-delay: 0.1s;
+}
+
+.podiumThird {
+  animation-delay: 0.2s;
+}
+
+@keyframes rise-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.podiumCrown {
+  font-size: 1.5rem;
+  animation: bounce 1s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.podiumAvatar {
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+.podiumName {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.podiumScore {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.625rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.podiumBase {
+  width: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  border-radius: 8px 8px 0 0;
+}
+
+.podiumFirst .podiumBase {
+  height: 60px;
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+}
+
+.podiumSecond .podiumBase {
+  height: 45px;
+  background: linear-gradient(135deg, #C0C0C0, #A0A0A0);
+}
+
+.podiumThird .podiumBase {
+  height: 35px;
+  background: linear-gradient(135deg, #CD7F32, #A0522D);
+}
+
+/* Personal Achievement - shown prominently to the player */
+.personalAchievement {
+  background: linear-gradient(135deg, rgba(255, 107, 74, 0.15), rgba(255, 184, 108, 0.15));
+  border: 1px solid rgba(255, 107, 74, 0.3);
+  border-radius: 16px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  animation: achievement-reveal 0.5s ease-out forwards;
+}
+
+@keyframes achievement-reveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(10px);
+  }
+  50% {
+    transform: scale(1.05) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.personalAchievementEmoji {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  animation: emoji-bounce 0.6s ease-out;
+  animation-delay: 0.3s;
+}
+
+@keyframes emoji-bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.personalAchievementTitle {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  margin-bottom: 0.25rem;
+}
+
+.personalAchievementDesc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* Responsive adjustments */
+@media (min-width: 640px) {
+  .reactionBar {
+    bottom: 2rem;
+    left: 2rem;
+  }
+  
+  .reactionPicker {
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 180px;
+  }
+  
+  .floatingEmoji {
+    font-size: 3rem;
+  }
+  
+  .personalAchievement {
+    padding: 1.25rem 1.5rem;
+  }
+  
+  .personalAchievementEmoji {
+    font-size: 3.5rem;
+  }
+  
+  .personalAchievementTitle {
+    font-size: 1.25rem;
+  }
+  
+  .personalAchievementDesc {
+    font-size: 1rem;
+  }
+  
+  .podium {
+    gap: 1rem;
+    min-height: 180px;
+  }
+  
+  .podiumAvatar {
+    font-size: 2.5rem;
+  }
+  
+  .podiumName {
+    font-size: 0.875rem;
+    max-width: 100px;
+  }
+  
+  .podiumScore {
+    font-size: 0.75rem;
+  }
+  
+  .podiumBase {
+    width: 90px;
+    font-size: 1.5rem;
+  }
+  
+  .podiumFirst .podiumBase {
+    height: 80px;
+  }
+  
+  .podiumSecond .podiumBase {
+    height: 60px;
+  }
+  
+  .podiumThird .podiumBase {
+    height: 45px;
+  }
+  
+  .achievementBadge {
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .achievementEmoji {
+    font-size: 1.5rem;
+  }
+  
+  .achievementName {
+    font-size: 0.75rem;
+  }
+  
+  .achievementPlayer {
+    font-size: 0.625rem;
+  }
+}

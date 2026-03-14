@@ -1,0 +1,100 @@
+.container {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 1000;
+  background: var(--bg-card);
+  padding: 0.5rem;
+  border-radius: 50px;
+  box-shadow: var(--shadow-card);
+  /* Ensure it never affects layout */
+  width: auto;
+  height: auto;
+  max-width: fit-content;
+}
+
+.musicBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-main);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.musicBtn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.musicBtn:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+}
+
+.musicBtn.playing {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 74, 0.4); }
+  50% { box-shadow: 0 0 12px 4px rgba(255, 107, 74, 0.3); }
+}
+
+.volumeSlider {
+  width: 60px;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--bg-main);
+  border-radius: 2px;
+  outline: none;
+}
+
+.volumeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  cursor: pointer;
+}
+
+.volumeSlider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  cursor: pointer;
+  border: none;
+}
+
+/* Mobile - smaller and less intrusive */
+@media (max-width: 640px) {
+  .container {
+    bottom: 0.5rem;
+    right: 0.5rem;
+    padding: 0.375rem;
+  }
+
+  .musicBtn {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+
+  .volumeSlider {
+    width: 50px;
+  }
+}
+

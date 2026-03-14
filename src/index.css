@@ -1,0 +1,134 @@
+:root {
+  /* Warm sunset palette */
+  --bg-deep: #0f0a1e;
+  --bg-main: #1a1033;
+  --bg-card: #2a1f4a;
+  --bg-card-hover: #3a2f5a;
+  
+  --accent-primary: #ff6b4a;
+  --accent-secondary: #ffa64d;
+  --accent-glow: #ff8866;
+  
+  --text-primary: #f5f0ff;
+  --text-secondary: #b8a5d9;
+  --text-muted: #6b5a8f;
+  
+  --card-negative: #4ecdc4;
+  --card-low: #7fdb8a;
+  --card-mid: #ffd93d;
+  --card-high: #ff6b6b;
+  --card-max: #e84393;
+  
+  --success: #4ecdc4;
+  --warning: #ffd93d;
+  --danger: #ff6b6b;
+  
+  --shadow-glow: 0 0 40px rgba(255, 107, 74, 0.3);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: 'Fredoka', sans-serif;
+  background: linear-gradient(135deg, var(--bg-deep) 0%, var(--bg-main) 50%, #1e0f2e 100%);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Animated background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 107, 74, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(255, 166, 77, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(78, 205, 196, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+button {
+  font-family: 'Fredoka', sans-serif;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+input {
+  font-family: 'JetBrains Mono', monospace;
+  border: none;
+  outline: none;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 74, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(255, 107, 74, 0.6); }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes card-flip {
+  0% { transform: rotateY(0deg); }
+  50% { transform: rotateY(90deg); }
+  100% { transform: rotateY(0deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.4s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
